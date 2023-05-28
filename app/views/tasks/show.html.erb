@@ -1,10 +1,18 @@
-<h1>Task <%=@tasks.title%></h1>
-<p><%=@tasks.details%></p>
+<div class='container mt-5'>
+<h1>Task <%=@task.title%></h1>
+<p><%=@task.details%></p>
 <ul>
 
-  <% if @tasks.completed%>
+  <% if @task.completed%>
   <li>Task completed</li>
   <%else%><li>Task not yet completed</li>
    <% end %>
+   <%= link_to "Edit this task", task_edit_path(@task.id), class:'btn btn-primary mt-3'%>
+
 </ul>
 <%=link_to "Back to list", tasks_path%>
+
+<%= link_to "Delete",
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
