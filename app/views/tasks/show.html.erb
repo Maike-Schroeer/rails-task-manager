@@ -1,18 +1,27 @@
 <div class='container mt-5'>
-<h1>Task <%=@task.title%></h1>
-<p><%=@task.details%></p>
+  <h1>Task <%=@task.title%></h1>
+  <p><%=@task.details%></p>
 <ul>
+  <% if @task.completed? %>
+    <li>
+      <i class="fa-regular fa-square-check"></i><p>Task completed</p>
 
-  <% if @task.completed%>
-  <li>Task completed</li>
-  <%else%><li>Task not yet completed</li>
-   <% end %>
+    </li>
+  <% else %>
+    <li>
+      <i class="fa-regular fa-square"></i>
+      <p>Task not yet completed</p>
+    </li>
+  <% end %>
    <%= link_to "Edit this task", task_edit_path(@task.id), class:'btn btn-primary mt-3'%>
-
 </ul>
-<%=link_to "Back to list", tasks_path%>
 
-<%= link_to "Delete",
-  task_path(@task),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
+<hr class="mt-1 mb-1"/>
+
+  <div>
+    <i class="fa-duotone fa-hand-back-point-left"></i>
+    <%=link_to "Back to list", tasks_path %>
+      <a style= "text-decoration: none href=#"></a>
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 <div class='container mt-5'>
   <h2>Edit <%=@task.title%></h2>
 
-  <%= form_with model: @tasks do |f| %>
+  <%= form_with model: @task do |f| %>
   <div class='form-group'>
     <%= f.label :title%>
     <%= f.text_field :title, class:'form-control mt-3'%>
@@ -16,6 +16,9 @@
   </div>
     <%= f.submit class: 'btn btn-primary mt-3'%>
     <% end %>
+
+    <hr class="mt-1 mb-1"/>
+
   <div>
     <%=link_to "Back to list", tasks_path%>
   </div>
